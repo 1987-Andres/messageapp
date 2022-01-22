@@ -3,6 +3,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { MensajesController } from './mensajes/mensajes.controller';
+import { MensajesService } from './mensajes/mensajes.service';
 
 @Module({
   imports: [
@@ -13,11 +14,11 @@ import { MensajesController } from './mensajes/mensajes.controller';
       username: 'nest',
       password: 'app',
       database: 'sendmeapp_db',
-      entities: [],
+      entities: [__dirname + '/**/*.entity{.ts,.js}'],
       synchronize: true,
     }),
   ],
   controllers: [AppController, MensajesController],
-  providers: [AppService],
+  providers: [AppService, MensajesService],
 })
 export class AppModule { }
